@@ -33,4 +33,10 @@ $ kubectl scale deployments/webapp --replicas=2
 `
 
 Esta web está implementada con ```spring-session```, que mantiene los datos de la sesión en un servicio compartido externo, de forma que varias réplicas pueden acceder a los datos de la sesión. En concreto, en este ejemplo se usa MySQL como sitio centralizado para guardar los datos de la sesión de los usuarios.
- 
+
+
+## Fault tolerance testing
+
+Para probar los distintos escenarios, se ha creado un script de Artillery `artillery.yml` con el que se realizan pruebas de carga. 
+
+Cuando se desee añadir chaos testing a las pruebas de carga, aplicar el deployment `pod-chaos-monkey.yaml` para que se eliminen pods aleatoriamente. Se ha añadido un recurso role-binding al directorio /k8s para dar permisos al **pod-chaos-monkey** de listar y eliminar pods.
