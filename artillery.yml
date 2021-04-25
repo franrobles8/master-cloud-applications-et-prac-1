@@ -1,5 +1,5 @@
 config:
-  target: 'http://192.168.99.131:32546/'
+  target: 'https://webapp-franrobles8.cloud.okteto.net/'
   phases:
     - duration: 120
       arrivalRate: 10
