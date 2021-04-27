@@ -1,9 +1,8 @@
 #!/bin/bash
 # Randomly delete pods in a Kubernetes namespace.
-set -ex
 
 : ${DELAY:=30}
-: ${NAMESPACE:=franrobles8}
+: ${NAMESPACE:=default}
 
 while true; do
   kubectl \
@@ -13,7 +12,7 @@ while true; do
     tr " " "\n" | \
     shuf | \
     head -n 1 |
-    xargs -t \
+    xargs -t --no-run-if-empty \
     kubectl --namespace "${NAMESPACE}" delete pod
   sleep "${DELAY}"
 done

@@ -33,4 +33,7 @@ spec:
     app: webapp
   ports:
     - port: 8080
-      name: webapp
+      name: http-webapp
+      protocol: TCP
+      targetPort: 8080
+      
