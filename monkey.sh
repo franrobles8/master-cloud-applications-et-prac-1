@@ -8,7 +8,7 @@ while true; do
   kubectl \
     --namespace "${NAMESPACE}" \
     -o 'jsonpath={.items[*].metadata.name}' \
-    get pods | \
+    get pods -l app=webapp | \
     tr " " "\n" | \
     shuf | \
     head -n 1 |
